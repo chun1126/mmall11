@@ -10,7 +10,6 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +22,7 @@ import java.util.Set;
 @Service(value = "iCategoryService")
 public class CategoryServiceImp implements ICategoryService {
     private Logger logger = LoggerFactory.getLogger(CategoryServiceImp.class);
-     @Autowired
+    @Autowired
     private CategoryMapper categoryMapper;
 
     public ServerResponse addCategory(String categoryName, Integer parentId) {
