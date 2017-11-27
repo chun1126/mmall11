@@ -52,8 +52,8 @@ public class CartServiceImp implements ICartService {
     }
 
     public ServerResponse<CartVo> list(Integer userId) {
-
-        return null;
+        CartVo cartVo = this.getCartVoLimit(userId);
+        return ServerResponse.createBySuccess(cartVo);
 
     }
 
