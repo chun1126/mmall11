@@ -50,8 +50,16 @@ public class CartController {
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
-        return null;
-
+        return iCartService.update(user.getId(), count, productId);
+    }
+    @RequestMapping("delete_product.do")
+    @ResponseBody
+    public ServerResponse<CartVo> deleteProduct(HttpSession session, String productIds) {
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return iCartService.deleteProduct(user.getId(), productIds);
     }
 
 }

@@ -133,4 +133,13 @@
     <select id="selectCartProductCheckedStatusByUserId" resultType="int" parameterType="int">
         SELECT  count(1) from mmall_cart where checked = 0 and user_id = #{userId}
     </select>
+    <delete id="deleteByUserIdProductIds" parameterType="map">
+        DELETE FROM mmall_cart
+        WHERE user_id=#{userId}
+        <if test="productIdList!=null">
+            <foreach collection="productIdList" item="item" open="(" close=")" separator="," index="index">
+                #{item}
+            </foreach>
+        </if>
+    </delete>
 </mapper>
