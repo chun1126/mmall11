@@ -74,9 +74,23 @@ public class CartServiceImp implements ICartService {
         if (CollectionUtils.isEmpty(productList)) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENR.getCode(), ResponseCode.ILLEGAL_ARGUMENR.getDesc());
         }
-        cartMapper.deleteByUserIdProductIds(userId,productList);
+        cartMapper.deleteByUserIdProductIds(userId, productList);
         return this.list(userId);
     }
+
+    public ServerResponse<CartVo> selectOrUnselect(Integer userId, Integer productId, Integer checked) {
+        cartMapper.checkedOrUncheckedProduct(userId, productId, checked);
+        return this.list(userId);
+    }
+
+    public ServerResponse<Integer> getCartProductCount(Integer userId){
+        if(userId == null){
+            return ServerResponse.createBySuccess(0);
+        }
+        return ServerResponse.createBySuccess(cartMapper.selectCartProductCount(userId));
+    }
+
+
 
 
     private CartVo getCartVoLimit(Integer userId) {
