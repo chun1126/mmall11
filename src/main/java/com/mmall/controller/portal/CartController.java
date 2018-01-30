@@ -7,6 +7,7 @@ import com.mmall.pojo.User;
 import com.mmall.service.ICartService;
 import com.mmall.vo.CartVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpSession;
  * Created by lihaochun on 2017/11/17.
  */
 
-@Service
+@Controller
 @RequestMapping("/cart/")
 public class CartController {
     @Autowired
